@@ -18,14 +18,14 @@ Target Hyprland **0.57.2** from the upstream release tag. Its CMake configuratio
 | hyprwayland-scanner | Verify from pinned source | -devel 0.4.2-4.fc44 | Check its source minimum before choosing Fedora or Vox build |
 | glaze-v7 | CMake has bundled fallback v7.2.0 | No exact Fedora package candidate | Prefer the upstream bundled fallback; do not invent a Fedora RPM dependency |
 
-Release pages checked for the matching stack show aquamarine 0.16.0, hyprlang 0.6.8, hyprutils 0.14.4, hyprgraphics 0.6.0, hyprcursor 0.1.13, hyprwire 0.3.1, and hyprwayland-scanner 0.4.6. These are candidate pins, not yet a verified compatibility lock: verify every release tag against the Hyprland 0.57.2 subproject requirements, then record source URL, tag, and SHA-256 in the source manifest before building.
+Release pages checked for the matching stack show aquamarine 0.16.0, hyprlang 0.6.8, hyprutils 0.14.3, hyprgraphics 0.6.0, hyprcursor 0.1.13, hyprwire 0.3.1, and hyprwayland-scanner 0.4.6. These are candidate pins, not yet a verified compatibility lock: verify every release tag against the Hyprland 0.57.2 subproject requirements, then record source URL, tag, and SHA-256 in the source manifest before building.
 
 The Fedora package audit is in the successful GitHub Actions artifact `fedora-44-package-audit`; the audit checks Fedora repositories, not COPR or RPM Fusion.
 
 ## Build order
 
 1. **hyprland-protocols and hyprwayland-scanner**: inspect the Hyprland tag's CMake/subproject declarations and build requirements; use Fedora's versions only if they meet the declared minimum.
-2. **hyprutils 0.14.4**.
+2. **hyprutils 0.14.3**.
 3. **hyprlang 0.6.8**.
 4. **hyprcursor**: prefer Fedora 0.1.11 if it satisfies the pinned sources' ABI/API requirements; otherwise build 0.1.13.
 5. **hyprgraphics 0.6.0**.
