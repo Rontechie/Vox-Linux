@@ -20,6 +20,12 @@ The concrete remote build procedure, Dockerfile, gcloud commands, RPM signing, a
 5. Publish source RPMs, source tarballs, licenses, build manifest, and package NEVRAs beside the ISO.
 
 ## Licenses
+Vox packaging, scripts, and original customizations:
 © 2026 RonTech. Licensed under the GNU General Public License v3.0 (GPL-3.0).
+
+This project incorporates upstream components under compatible copyleft licenses:
+* **[dots-hyprland](https://github.com/end-4/dots-hyprland)** by **[Minh (@end-4)]([https://github.com](https://github.com/end-4))** — base Quickshell/Hyprland shell framework, widgets, and utilities (licensed under **GPL-3.0**, see `LICENSE`).
+* **[Serpantinum](https://github.com/ilyamiro/serpantinum)** by **[Illia Miroshnichenko (@ilyamiro)]([https://github.com](https://github.com/ilyamiro))** — core workspace and media player logic/components (licensed under **AGPL-3.0**, combined pursuant to Section 13 of GPL-3.0 / AGPL-3.0; see `LICENSE-AGPL-3.0`).
+* **Bundled Fonts & Icons** (`assets/icons/fluent/`, `assets/google-sans-flex/`, `assets/fonts/lyrics/`) — retain their respective upstream licenses (see bundled `LICENSE`/`OFL` files and `docs/source-audit.md`).
 
 
