@@ -1,0 +1,49 @@
+name: Build Hyprland RPM for Fedora 44
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - vox-starter
+    paths:
+      - '.github/workflows/build-hyprland-rpm.yml'
+      - 'packaging/hyprland/SPECS/hyprland.spec'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Free runner disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup /usr/share/swift /opt/hostedtoolcache/CodeQL
+          df -h /
+      - name: Build Fedora 44 RPMs
+        run: |
+          set -euo pipefail
+          mkdir -p artifacts/hyprland
+          sudo docker run --rm \
+            -v "$GITHUB_WORKSPACE:/work:Z" \
+            -w /work \
+            fedora:44 bash -lc '
+              set -euo pipefail
+              dnf -y install dnf-plugins-core rpm-build rpmdevtools spectool
+              rpmdev-setuptree
+              dnf builddep -y packaging/hyprland/SPECS/hyprland.spec
+              spectool -g -R packaging/hyprland/SPECS/hyprland.spec
+              rpmbuild -ba packaging/hyprland/SPECS/hyprland.spec
+              install -d /work/artifacts/hyprland
+              cp -a /root/rpmbuild/RPMS/. /work/artifacts/hyprland/
+              cp -a /root/rpmbuild/SRPMS/. /work/artifacts/hyprland/
+            '
+      - name: Upload RPM artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: hyprland-rpms-fedora44
+          path: artifacts/hyprland/
+          if-no-files-found: error
+          retention-days: 14
