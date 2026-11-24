@@ -1,0 +1,1 @@
+Place Vox-authored wallpapers here. Include the source and license for every image. The Hydro source tree currently has a `default_wallpaper.png`; verify its copyright and license before retaining it as the Vox default.

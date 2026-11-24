@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Vox (Hydro / Hyprland)
+Comment=Vox Linux desktop powered by Hydro and Hyprland
+Exec=Hyprland
+Type=Application
+DesktopNames=Vox;Hyprland

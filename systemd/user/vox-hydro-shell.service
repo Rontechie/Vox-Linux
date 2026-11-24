@@ -1,0 +1,14 @@
+[Unit]
+Description=Hydro shell for Vox
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/libexec/vox-hydro-first-login
+ExecStart=/usr/bin/qs -c %h/.local/share/hydro
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=vox-hydro-session.target

@@ -1,0 +1,14 @@
+[Unit]
+Description=Enable SDDM autologin only for the Vox live session
+DefaultDependencies=no
+After=local-fs.target
+Before=display-manager.service
+ConditionPathExists=/run/initramfs/live
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/vox-enable-live-autologin
+RemainAfterExit=yes
+
+[Install]
+WantedBy=display-manager.service

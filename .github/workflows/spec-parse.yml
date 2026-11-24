@@ -1,0 +1,28 @@
+name: RPM spec syntax
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  parse-specs:
+    runs-on: ubuntu-24.04
+    container: fedora:44
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install RPM tooling
+        run: dnf -y install rpm-build
+      - name: Parse every Vox RPM spec
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -d '' specs < <(find packaging -type f -name '*.spec' -print0 | sort -z)
+          test "${#specs[@]}" -gt 0
+          for spec in "${specs[@]}"; do
+            echo "Parsing ${spec}"
+            rpmspec -P "${spec}" >/dev/null
+          done

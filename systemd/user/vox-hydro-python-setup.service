@@ -1,0 +1,13 @@
+[Unit]
+Description=Prepare the Hydro Python virtual environment
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/vox-hydro-python-setup
+RemainAfterExit=yes
+TimeoutStartSec=600
+
+[Install]
+WantedBy=vox-hydro-session.target
