@@ -2,7 +2,7 @@ Name:           vox-hydro-shell
 Version:        0.1.0
 Release:        1%{?dist}
 Summary:        Hydro Quickshell desktop shell configuration for Vox
-License:        LicenseRef-Vox-Hydro
+License:        GPL-3.0-only
 BuildArch:      noarch
 Source0:        hydro-%{version}.tar.gz
 Source1:        vox-hydro-integration-%{version}.tar.gz

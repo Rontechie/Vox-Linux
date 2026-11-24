@@ -1,6 +1,6 @@
 # Source and asset audit from comment-cleaned.zip
 
-Archive inventory: 1,186 files, 732 QML files, about 11.7 MB. It includes the Hydro shell, Nexus, welcome.qml, scripts, translations, fonts, icons, wallpapers, and sounds. The user confirms the Hydro project is GPL-3.0; `LICENSE` contains the full license text. Separate asset licenses still apply and must be preserved.
+Archive inventory: 1,186 files, 732 QML files, about 11.7 MB. It includes the Hydro shell, Nexus, welcome.qml, scripts, translations, fonts, icons, wallpapers, and sounds. The user confirms the Hydro project is GPL-3.0; `LICENSE` and `hydro/LICENSE` contain the full license text. Separate asset licenses still apply and must be preserved.
 
 The archive contained old .bak/.pre/.before QML variants and Python bytecode; these are excluded from `hydro/`. AI-provider artwork and token-helper material were excluded during import, and the welcome text is Vox-branded. Hydro must remain free of AI features. Re-scan the active source before each release. The Google Cloud builder is separate infrastructure and does not add AI features to Vox.
 
