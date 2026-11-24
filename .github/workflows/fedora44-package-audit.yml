@@ -2,6 +2,14 @@ name: Fedora 44 package audit
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - vox-starter
+    paths:
+      - '.github/workflows/fedora44-package-audit.yml'
+      - 'package-audit.txt'
+      - 'scripts/check-fedora44-packages.sh'
+      - 'docs/packages.md'
   pull_request:
     paths:
       - '.github/workflows/fedora44-package-audit.yml'
