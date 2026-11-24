@@ -1,0 +1,29 @@
+name: Fedora 44 package audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/fedora44-package-audit.yml'
+      - 'package-audit.txt'
+      - 'scripts/check-fedora44-packages.sh'
+      - 'docs/packages.md'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-24.04
+    container: fedora:44
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Fedora repository queries
+        run: bash scripts/check-fedora44-packages.sh package-audit.txt package-audit-results.txt
+      - name: Save audit output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fedora-44-package-audit
+          path: package-audit-results.txt
+          if-no-files-found: warn
