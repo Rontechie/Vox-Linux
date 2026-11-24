@@ -46,5 +46,5 @@ Headers and pkg-config metadata for building software against Hyprutils.
 %{_libdir}/pkgconfig/hyprutils.pc
 
 %changelog
-* Tue Nov 24 2026 RonTech <packages@rontech.example> - 0.14.3-1
+* Tue Nov 24 2026 Vox Linux packaging team - 0.14.3-1
 - Initial Vox Fedora 44 build of upstream Hyprutils
