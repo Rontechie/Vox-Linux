@@ -11,6 +11,6 @@ mkdir -p "$repo/work/rpmsources/integration/scripts" "$repo/work/rpmsources/inte
 cp "$repo/scripts/vox-hydro-first-login.sh" "$repo/scripts/vox-hydro-python-setup.sh" "$repo/work/rpmsources/integration/scripts/"
 cp "$repo/systemd/user/vox-hydro-session.target" "$repo/systemd/user/vox-hydro-shell.service" "$repo/systemd/user/vox-hydro-python-setup.service" "$repo/work/rpmsources/integration/systemd/user/"
 cp "$repo/packaging/vox-hydro-shell/session.desktop" "$repo/work/rpmsources/integration/"
-cp "$repo/configs/hyprland/hyprland.conf" "$repo/work/rpmsources/integration/"
+cp "$repo/configs/hypr/hyprland.lua" "$repo/configs/hypr/appearance.lua" "$repo/work/rpmsources/integration/"
 tar -C "$repo/work/rpmsources" -czf "$HOME/rpmbuild/SOURCES/hydro-$version.tar.gz" "hydro-$version"
 tar -C "$repo/work/rpmsources" -czf "$HOME/rpmbuild/SOURCES/vox-hydro-integration-$version.tar.gz" integration
