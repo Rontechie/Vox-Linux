@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+
+import cv2
+import numpy as np
+import json
+import sys
+
+def to_hex(color):
+    return "#{:02x}{:02x}{:02x}".format(int(color[0]), int(color[1]), int(color[2]))
+
+def get_color_from_stdin():
+    input_data = sys.stdin.buffer.read()
+    if not input_data:
+        return {"error": "No data received via stdin"}
+
+    nparr = np.frombuffer(input_data, np.uint8)
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    
+    if img is None:
+        return {"error": "Could not decode image data"}
+    
+    img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    h, w, _ = img_rgb.shape
+
+    corners = np.array([
+        img_rgb[0, 0],
+        img_rgb[0, w-1],
+        img_rgb[h-1, 0],
+        img_rgb[h-1, w-1]
+    ])
+
+    bg_color = np.median(corners, axis=0).astype(int)
+
+    pixels = img_rgb.reshape(-1, 3).astype(int)
+    distances = np.linalg.norm(pixels - bg_color, axis=1)
+    
+    threshold = np.percentile(distances, 95)
+    text_pixels = pixels[distances >= threshold]
+    
+    if len(text_pixels) == 0:
+        text_color = [255, 255, 255] # Fallback
+    else:
+        text_color = np.median(text_pixels, axis=0).astype(int)
+
+    return {
+        "background": to_hex(bg_color),
+        "text": to_hex(text_color)
+    }
+
+if __name__ == "__main__":
+    result = get_color_from_stdin()
+    print(json.dumps(result))

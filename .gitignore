@@ -1,0 +1,10 @@
+# Local build output and scratch source copies
+work/
+rpmbuild/
+*.iso
+*.rpm
+*.srpm
+*.tar.gz
+*.tar.xz
+*.qcow2
+*.log

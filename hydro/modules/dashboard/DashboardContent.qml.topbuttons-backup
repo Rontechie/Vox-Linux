@@ -1,0 +1,54 @@
+import qs
+import qs.services
+import qs.modules.common
+import qs.modules.common.widgets
+import qs.modules.sidebarRight
+import QtQuick
+import QtQuick.Layouts
+
+Item {
+    id: root
+    property int tab: 0 // tab bar removed: always the Overview
+    readonly property var tabs: [
+        { icon: "dashboard", label: Translation.tr("Overview") },
+        { icon: "music_note", label: Translation.tr("Media") },
+        { icon: "partly_cloudy_day", label: Translation.tr("Weather") }
+    ]
+
+    implicitWidth: background.implicitWidth
+    implicitHeight: background.implicitHeight
+
+    StyledRectangularShadow {
+        target: background
+    }
+    Rectangle {
+        id: background
+        anchors.fill: parent
+        implicitHeight: parent.height - Appearance.sizes.hyprlandGapsOut * 2
+        implicitWidth: Appearance.sizes.sidebarWidth - Appearance.sizes.hyprlandGapsOut * 2
+        color: Appearance.colors.colLayer0
+        border.width: 1
+        border.color: Appearance.colors.colLayer0Border
+        radius: Appearance.rounding.screenRounding - Appearance.sizes.hyprlandGapsOut + 1
+
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: 10
+            spacing: 6
+
+            DashHeader {}
+
+            StackLayout {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                currentIndex: root.tab
+
+                SidebarRightContent {
+                    embedded: true
+                }
+                MediaTab {}
+                WeatherTab {}
+            }
+        }
+    }
+}

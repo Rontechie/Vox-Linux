@@ -1,0 +1,7 @@
+[Unit]
+Description=Vox Hydro desktop session
+Wants=vox-hydro-shell.service vox-hydro-python-setup.service
+After=graphical-session.target
+
+[Install]
+WantedBy=default.target

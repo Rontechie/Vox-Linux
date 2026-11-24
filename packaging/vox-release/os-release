@@ -1,0 +1,16 @@
+NAME="Vox"
+PRETTY_NAME="Vox Linux 44"
+ID=vox
+ID_LIKE="fedora"
+VERSION="44"
+VERSION_ID=44
+PLATFORM_ID="platform:f44"
+ANSI_COLOR="0;36"
+LOGO=vox-logo-icon
+CPE_NAME="cpe:/o:vox:vox:44"
+HOME_URL="https://REPLACE-WITH-VOX-DOMAIN.invalid/"
+DOCUMENTATION_URL="https://REPLACE-WITH-VOX-DOMAIN.invalid/docs/"
+SUPPORT_URL="https://REPLACE-WITH-VOX-DOMAIN.invalid/support/"
+BUG_REPORT_URL="https://REPLACE-WITH-VOX-DOMAIN.invalid/issues/"
+VARIANT="Hydro Desktop"
+VARIANT_ID=hydro
