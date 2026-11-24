@@ -28,4 +28,4 @@ This project incorporates upstream components under compatible copyleft licenses
 * **[Serpantinum](https://github.com/ilyamiro/serpantinum)** by **[Illia Miroshnichenko (@ilyamiro)]([https://github.com](https://github.com/ilyamiro))** — core workspace and media player logic/components (licensed under **AGPL-3.0**, combined pursuant to Section 13 of GPL-3.0 / AGPL-3.0; see `LICENSE-AGPL-3.0`).
 * **Bundled Fonts & Icons** (`assets/icons/fluent/`, `assets/google-sans-flex/`, `assets/fonts/lyrics/`) — retain their respective upstream licenses (see bundled `LICENSE`/`OFL` files and `docs/source-audit.md`).
 
-
+.
