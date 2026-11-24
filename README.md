@@ -21,4 +21,5 @@ The concrete remote build procedure, Dockerfile, gcloud commands, RPM signing, a
 
 ## Licenses
 Under the license of GPL-3.0(2007) 
+
 © 2026 RonTech. All rights reserved.
