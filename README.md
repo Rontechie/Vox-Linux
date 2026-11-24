@@ -19,8 +19,6 @@ The concrete remote build procedure, Dockerfile, gcloud commands, RPM signing, a
 4. Sign ISO with `gpg --detach-sign --armor vox-44.0.0-x86_64.iso`; publish checksum and signature.
 5. Publish source RPMs, source tarballs, licenses, build manifest, and package NEVRAs beside the ISO.
 
-## 2026 Ron©
-
-## Scope
-
-This is an engineering starter repository, not a finished installer or complete Hydro desktop. No AI features are included. The installer is Anaconda, not Calamares, to retain Fedora's supported storage, bootloader, and hardware flows.
+## Licenses
+Under the license of GPL-3.0(2007) 
+© 2026 RonTech. All rights reserved.
