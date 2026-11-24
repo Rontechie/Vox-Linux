@@ -83,7 +83,7 @@ install -m 0755 integration/scripts/vox-hydro-first-login.sh %{buildroot}%{_libe
 install -m 0755 integration/scripts/vox-hydro-python-setup.sh %{buildroot}%{_libexecdir}/vox-hydro-python-setup
 install -m 0644 integration/systemd/user/*.service integration/systemd/user/*.target %{buildroot}%{_libdir}/systemd/user/
 install -m 0644 integration/session.desktop %{buildroot}%{_datadir}/wayland-sessions/vox-hyprland.desktop
-install -m 0644 integration/hyprland.conf %{buildroot}%{_sysconfdir}/skel/.config/hypr/hyprland.conf
+install -m 0644 integration/hyprland.lua integration/appearance.lua %{buildroot}%{_sysconfdir}/skel/.config/hypr/
 rm -f %{buildroot}%{_datadir}/hydro/.gitignore
 find %{buildroot}%{_datadir}/hydro -type f \( -name '*.bak*' -o -name '*.pre*' -o -name '*.before*' -o -name '*.pyc' \) -delete
 find %{buildroot}%{_datadir}/hydro -type d -name __pycache__ -prune -exec rm -rf {} +
@@ -98,7 +98,7 @@ find %{buildroot}%{_datadir}/hydro -type d -name __pycache__ -prune -exec rm -rf
 %{_libdir}/systemd/user/vox-hydro-shell.service
 %{_libdir}/systemd/user/vox-hydro-python-setup.service
 %{_datadir}/wayland-sessions/vox-hyprland.desktop
-%config(noreplace) %{_sysconfdir}/skel/.config/hypr/hyprland.conf
+%config(noreplace) %{_sysconfdir}/skel/.config/hypr/hyprland.lua\n%config(noreplace) %{_sysconfdir}/skel/.config/hypr/appearance.lua
 
 %changelog
 * Tue Nov 24 2026 Vox Project <packages@vox.invalid> - 0.1.0-1
