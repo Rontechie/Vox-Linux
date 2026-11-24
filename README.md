@@ -20,6 +20,6 @@ The concrete remote build procedure, Dockerfile, gcloud commands, RPM signing, a
 5. Publish source RPMs, source tarballs, licenses, build manifest, and package NEVRAs beside the ISO.
 
 ## Licenses
-Under the license of GPL-3.0(2007) 
+© 2026 RonTech. Licensed under the GNU General Public License v3.0 (GPL-3.0).
 
-© 2026 RonTech. All rights reserved.
+
