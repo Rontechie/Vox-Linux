@@ -98,7 +98,8 @@ find %{buildroot}%{_datadir}/hydro -type d -name __pycache__ -prune -exec rm -rf
 %{_libdir}/systemd/user/vox-hydro-shell.service
 %{_libdir}/systemd/user/vox-hydro-python-setup.service
 %{_datadir}/wayland-sessions/vox-hyprland.desktop
-%config(noreplace) %{_sysconfdir}/skel/.config/hypr/hyprland.lua\n%config(noreplace) %{_sysconfdir}/skel/.config/hypr/appearance.lua
+%config(noreplace) %{_sysconfdir}/skel/.config/hypr/hyprland.lua
+%config(noreplace) %{_sysconfdir}/skel/.config/hypr/appearance.lua
 
 %changelog
 * Tue Nov 24 2026 Vox Project <packages@vox.invalid> - 0.1.0-1
