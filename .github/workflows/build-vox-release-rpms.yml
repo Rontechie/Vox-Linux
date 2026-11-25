@@ -10,11 +10,27 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: Report remaining source prerequisites
+      - name: Build release and repo RPMs in Fedora 44
         run: |
-          echo "Release/repo RPM builds require complete source archives and a real signing key/repository URL."
-          test -f packaging/vox-release/vox-release.spec
-          test -f packaging/vox-repos/vox-repos.spec
+          sudo docker run --rm -v "$GITHUB_WORKSPACE:/work:Z" -w /work fedora:44 bash -euc '
+            dnf -y install rpm-build rpmdevtools
+            rpmdev-setuptree
+            for p in vox-release vox-repos; do
+              v=44
+              mkdir -p "$HOME/rpmbuild/SOURCES/$p-$v"
+              cp -a "packaging/$p/." "$HOME/rpmbuild/SOURCES/$p-$v/"
+              tar -C "$HOME/rpmbuild/SOURCES" -czf "$HOME/rpmbuild/SOURCES/$p-$v.tar.gz" "$p-$v"
+              rpmbuild -ba "packaging/$p/$p.spec"
+            done
+            mkdir -p /work/artifacts/vox-rpms
+            cp -a "$HOME"/rpmbuild/RPMS/noarch/*.rpm /work/artifacts/vox-rpms/
+          '
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vox-release-rpms-fedora44
+          path: artifacts/vox-rpms/
+          if-no-files-found: error
+          retention-days: 14
