@@ -22,17 +22,17 @@ key before building a public release.
 %build
 
 %install
-install -d %{buildroot}%{_prefix}/lib %{buildroot}%{_sysconfdir}/pki/rpm-gpg %{buildroot}%{_libexecdir} %{buildroot}%{_unitdir}
+install -d %{buildroot}%{_prefix}/lib %{buildroot}%{_sysconfdir}/pki/rpm-gpg %{buildroot}%{_libexecdir} %{buildroot}/usr/lib/systemd/system
 install -m 0644 os-release %{buildroot}%{_prefix}/lib/os-release
 install -m 0644 issue %{buildroot}%{_sysconfdir}/issue
 install -m 0755 vox-enable-live-autologin.sh %{buildroot}%{_libexecdir}/vox-enable-live-autologin
-install -m 0644 vox-live-autologin.service %{buildroot}%{_unitdir}/vox-live-autologin.service
+install -m 0644 vox-live-autologin.service %{buildroot}/usr/lib/systemd/system/vox-live-autologin.service
 
 %files
 %{_prefix}/lib/os-release
 %config(noreplace) %{_sysconfdir}/issue
 %{_libexecdir}/vox-enable-live-autologin
-%{_unitdir}/vox-live-autologin.service
+/usr/lib/systemd/system/vox-live-autologin.service
 
 %changelog
 * Tue Nov 24 2026 Vox Project <packages@vox.invalid> - 44-1
